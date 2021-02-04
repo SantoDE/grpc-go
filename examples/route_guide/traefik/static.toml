@@ -1,0 +1,22 @@
+[entryPoints]
+  [entryPoints.web]
+    address = ":80"
+
+  [entryPoints.websecure]
+    address = ":443"
+
+[api]
+    debug = true
+
+[log]
+    level = "DEBUG"
+
+[providers]
+    [providers.file]
+        directory = "/etc/conf"
+
+[serversTransport]
+    rootcas = "/etc/certs/ca_cert.pem"
+    insecureSkipVerify = true
+
+

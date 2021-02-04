@@ -1,0 +1,17 @@
+[http]
+  [http.routers]
+    [http.routers.grpc]
+      service = "grpc"
+      rule = "Host(`grpc.test.example.com`)"
+      tls = true
+
+  [http.services]
+    [http.services.grpc]
+      [http.services.grpc.loadBalancer]
+        [[http.services.grpc.loadBalancer.servers]]
+          url = "https://host.docker.internal:10000"
+
+[tls]
+  [[tls.certificates]]
+    certFile = "/etc/certs/server_cert.pem"
+    keyFile = "/etc/certs/server_key.pem"
